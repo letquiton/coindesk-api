@@ -1,8 +1,11 @@
 using System.Threading.Tasks;
 using coinbaseapi.Models;
+using System.Collections.Generic;
+
 
 public interface IApiService
 {
-  public Task<Price> GetCurrentBtcPrice();
-  public Task StartPollingCoindesk();
+    public Task<List<Currency>> GetCurrectPrices();
+    // public Task<Price> GetCurrentBtcPrice();
+    public Task StartPollingCoindesk();
 }

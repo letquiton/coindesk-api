@@ -9,32 +9,33 @@ using Microsoft.Extensions.Logging;
 
 namespace coinbaseapi.Controllers
 {
-  [ApiController]
-  [Route("[controller]")]
-  public class CoinbaseController : ControllerBase
-  {
-    private readonly ILogger<CoinbaseController> _logger;
-    private readonly IMemoryCache _memoryCache;
-
-    public CoinbaseController(
-      ILogger<CoinbaseController> logger,
-      IMemoryCache memoryCache
-    )
+    [ApiController]
+    [Route("[controller]")]
+    public class CoinbaseController : ControllerBase
     {
-      _logger = logger;
-      _memoryCache = memoryCache;
-    }
+        private readonly ILogger<CoinbaseController> _logger;
+        private readonly IMemoryCache _memoryCache;
 
-    [HttpGet]
-    public IEnumerable<Price> Get()
-    {
-      IList<Price> prices = _memoryCache.Get("PriceList") as IList<Price>;
-      if (prices != null)
-      {
-        return prices;
-      }
+        public CoinbaseController(
+          ILogger<CoinbaseController> logger,
+          IMemoryCache memoryCache
+        )
+        {
+            _logger = logger;
+            _memoryCache = memoryCache;
+        }
 
-      return new List<Price>();
+        [HttpGet]
+        public IEnumerable<Currency> Get()
+        {
+            IList<Currency> prices = _memoryCache.Get("PriceList") as IList<Currency>;
+
+            if (prices != null)
+            {
+                return prices;
+            }
+
+            return new List<Currency>();
+        }
     }
-  }
 }
