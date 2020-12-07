@@ -24,7 +24,7 @@ namespace coinbaseapi.Services
           IHubContext<BTCHub> hubContext)
         {
             _httpClient = httpClient;
-            _pollingInterval = 100000; //10 Seconds
+            _pollingInterval = 10000; //10 Seconds
             _cache = cache;
             _hubContext = hubContext;
         }
